@@ -1,4 +1,5 @@
 # React + Vite
+기존의 깃허브 주소 : https://github.com/onepice0807/react-aipin-clone-kym
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
