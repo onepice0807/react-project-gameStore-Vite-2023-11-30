@@ -1,0 +1,40 @@
+.game-list {
+  padding: 20px;
+  padding: auto;
+}
+
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+}
+
+.game-card {
+  border: 1px solid #e1e1e1;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 2px 2px 3px 3px #767676;
+}
+
+.game-card:hover {
+  transform: scale(1.025);
+  box-shadow: 2px 2px 3px 3px rgba(0, 0, 0, 0.3);
+}
+
+.game-image {
+  width: 100%;
+  object-fit: cover;
+}
+
+.game-info {
+  padding: 10px;
+}
+
+.game-info h3 {
+  margin: 0;
+  font-size: 1.2em;
+}
+
+.game-info p {
+  margin: 5px 0;
+}

@@ -1,0 +1,25 @@
+.banners-container {
+  display: flex;
+  justify-content: center;
+  margin: 15px auto; /* 상단과 하단의 여백은 15px, 좌우는 자동으로 설정하여 중앙 정렬 */
+  padding: 10px;
+  background-color: #ffffff;
+  width: 350px; /* 너비를 500px로 설정 */
+  border-radius: 30px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+}
+
+.banner {
+  padding: 10px 20px;
+  margin: 0 10px;
+  cursor: pointer;
+  border-radius: 20px;
+  background-color: #ffffff; /* 기본 배경색 */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+  transition: background-color 0.3s; /* 부드러운 색상 변화 효과 */
+}
+
+.banner.selected {
+  background-color: #000; /* 선택된 배너의 배경색 */
+  color: #fff; /* 선택된 배너의 텍스트 색상 */
+}
