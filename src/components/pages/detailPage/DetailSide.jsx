@@ -1,20 +1,35 @@
+/* eslint-disable react/prop-types */
 import { IoIosAddCircleOutline, IoIosCheckmarkCircle } from "react-icons/io";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
+import PurchaseModal from "./PurchaseModal";
+import { FaWindows } from "react-icons/fa";
+import { useState } from "react";
 
-// eslint-disable-next-line react/prop-types
-const DetailSide = ({ addToWishlist, addToCart, isGameInWishlist }) => {
+const DetailSide = ({
+  addToWishlist,
+  addToCart,
+  isGameInWishlist,
+  isGameInCart,
+  gameDetail,
+}) => {
+  const [showModal, setShowModal] = useState(false); // 모달 창의 상태를 결정하는 State
+
   return (
     <Container>
       <NavigationBar>
-        <Button
-          onClick={() => {
-            /* 구매 관련 함수 넣을공간 */
-          }}
-        >
-          지금 구매
-        </Button>
-        <button onClick={addToCart}>장바구니에 담기</button>
-        <button onClick={addToWishlist}>
+        <Button onClick={() => setShowModal(true)}>지금 구매</Button>
+        {showModal && (
+          <PurchaseModal gameDetail={gameDetail} setShowModal={setShowModal} />
+        )}
+        {isGameInCart ? (
+          <Link to="/shop/cart" style={{ textDecoration: "none" }}>
+            <CartButton>장바구니로 이동</CartButton>
+          </Link>
+        ) : (
+          <CartButton onClick={addToCart}>장바구니에 담기</CartButton>
+        )}
+        <WishButton onClick={addToWishlist}>
           {isGameInWishlist ? (
             <>
               <IoIosCheckmarkCircle />
@@ -26,27 +41,29 @@ const DetailSide = ({ addToWishlist, addToCart, isGameInWishlist }) => {
               위시리스트에 추가
             </>
           )}
-        </button>
-        <table>
+        </WishButton>
+        <Table>
           <tbody>
             <tr>
-              <td>a</td>
-              <td>a</td>
+              <td>개발사</td>
+              <td>{gameDetail.gameDeveloperId}</td>
             </tr>
             <tr>
-              <td>a</td>
-              <td>a</td>
+              <td>퍼블리셔</td>
+              <td>{gameDetail.gamePublisherId}</td>
             </tr>
             <tr>
-              <td>a</td>
-              <td>a</td>
+              <td>출시일</td>
+              <td>{gameDetail.lunchDate}</td>
             </tr>
             <tr>
-              <td>a</td>
-              <td>a</td>
+              <td>플랫폼</td>
+              <td>
+                <FaWindows />
+              </td>
             </tr>
           </tbody>
-        </table>
+        </Table>
       </NavigationBar>
     </Container>
   );
@@ -58,7 +75,7 @@ const Container = styled.div`
   top: auto;
   display: flex;
   padding-right: 100px;
-  padding-bottom: 1100px;
+  padding-bottom: 100px;
 `;
 
 const NavigationBar = styled.div`
@@ -87,3 +104,23 @@ const Button = styled.button`
   border-color: #c7ddff;
   box-shadow: 1px 1px 2px 2px;
 `;
+
+const CartButton = styled.button`
+  width: 320px;
+  height: 50px;
+  border-radius: 10px;
+  border-color: #ffffff;
+  box-shadow: 1px 1px 2px 2px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+`;
+
+const WishButton = styled.button`
+  width: 320px;
+  height: 50px;
+  border-radius: 10px;
+  border-color: #ffffff;
+  box-shadow: 1px 1px 2px 2px;
+`;
+
+const Table = styled.table``;

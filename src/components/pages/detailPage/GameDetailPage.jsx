@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Carousel } from "react-responsive-carousel";
 import { GAMES } from "../../data/Game";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -14,10 +14,17 @@ const GameDetailPage = () => {
 
   const isGameInWishlist = wishlist.some((item) => item.id === gameDetail.id);
 
+  const isGameInCart = cart.some((item) => item.id === gameDetail.id);
+
   const addToCart = () => {
-    if (!cart.some((item) => item.id === gameDetail.id)) {
-      setCart([...cart, gameDetail]);
+    let updatedCart;
+    if (!isGameInCart) {
+      updatedCart = [...cart, gameDetail];
+    } else {
+      updatedCart = cart.filter((item) => item.id !== gameDetail.id);
     }
+    setCart(updatedCart);
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
 
   const addToWishlist = () => {
@@ -30,10 +37,10 @@ const GameDetailPage = () => {
   };
 
   useEffect(() => {
-    const storedWishlist = JSON.parse(localStorage.getItem("wishlist"));
-    if (storedWishlist) {
-      setWishlist(storedWishlist);
-    }
+    const storedWishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+    const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
+    setWishlist(storedWishlist);
+    setCart(storedCart);
   }, []);
 
   if (!gameDetail) {
@@ -75,11 +82,34 @@ const GameDetailPage = () => {
             </div>
           ))}
         </Carousel>
+        <div>{gameDetail.description}</div>
+        <Content>
+          <div>장르</div>
+          <ul>
+            {gameDetail.genre.map((genre, index) => (
+              <li key={index}>
+                <Link to={`/shop/genre/${genre}`}>{genre}, </Link>
+                {/* 선택한 장르 모음 리스트로 이동 */}
+              </li>
+            ))}
+          </ul>
+          <div>기능</div>
+          <ul>
+            {gameDetail.function.map((functions, index) => (
+              <li key={index}>
+                <Link to={`/shop/function/${functions}`}>{functions}, </Link>
+                {/* 선택한 기능 모음 리스트로 이동 */}
+              </li>
+            ))}
+          </ul>
+        </Content>
       </DetailMain>
       <DetailSide
         addToWishlist={addToWishlist}
         addToCart={addToCart}
         isGameInWishlist={isGameInWishlist}
+        isGameInCart={isGameInCart}
+        gameDetail={gameDetail}
       />
     </Container>
   );
@@ -113,4 +143,23 @@ const NavigationBar = styled.div`
 const DetailMain = styled.div`
   width: 50%;
   margin: auto;
+`;
+
+const Content = styled.div`
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  & > div {
+    border-left: solid 1px #484848;
+    font-weight: bold;
+    padding: 10px;
+  }
+
+  & > ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    margin: 1px;
+  }
 `;
