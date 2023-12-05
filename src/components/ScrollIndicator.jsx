@@ -1,5 +1,6 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import styled from 'styled-components';
+/* eslint-disable react/prop-types */
+import { useState, useEffect, useCallback } from "react";
+import styled from "styled-components";
 
 const ScrollIndicator = ({ sections }) => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -18,8 +19,8 @@ const ScrollIndicator = ({ sections }) => {
   }, [sections]);
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [handleScroll]);
 
   // 섹션으로 스크롤하는 함수
@@ -27,7 +28,7 @@ const ScrollIndicator = ({ sections }) => {
     const sectionId = `section-${index}`;
     const section = document.getElementById(sectionId);
     if (section) {
-      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      section.scrollIntoView({ behavior: "smooth", block: "start" });
     } else {
       console.error(`No element with id ${sectionId} found`);
     }
@@ -64,7 +65,7 @@ const ScrollIndicatorDot = styled.div`
   width: 8px;
   height: 8px;
   margin: 4px 0;
-  background-color: ${(props) => (props.active ? '#fff' : '#555')};
+  background-color: ${(props) => (props.active ? "#fff" : "#555")};
   border-radius: 50%;
   transition: transform 0.3s, opacity 0.3s;
   transform: scale(${(props) => (props.active ? 1.5 : 1)});

@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import './GameList.css';
-import axios from 'axios';
+import { useEffect, useState } from "react";
+import "./GameList.css";
+import axios from "axios";
 
 const GameListAxios = () => {
   const [games, setGames] = useState([]);
@@ -8,10 +8,10 @@ const GameListAxios = () => {
   useEffect(() => {
     const fetchGames = async () => {
       try {
-        const response = await axios.get('/domain/games');
+        const response = await axios.get("/domain/games");
         setGames(response.data);
       } catch (error) {
-        console.error('Error fetching games', error);
+        console.error("Error fetching games", error);
       }
     };
 

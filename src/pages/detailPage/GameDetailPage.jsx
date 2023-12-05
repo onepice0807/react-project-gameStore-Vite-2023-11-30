@@ -5,7 +5,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import styled from "styled-components";
 import DetailSide from "./DetailSide";
 import { useContext, useEffect } from "react";
-import { GameContext } from "../../../context/GameContext";
+import { GameContext } from "../../context/GameContext";
 
 const GameDetailPage = () => {
   const { gameId } = useParams();
@@ -83,7 +83,7 @@ const GameDetailPage = () => {
           ))}
         </Carousel>
         <div>{gameDetail.description}</div>
-        <Content>
+        <Explanation>
           <div>장르</div>
           <ul>
             {gameDetail.genre.map((genre, index) => (
@@ -102,7 +102,8 @@ const GameDetailPage = () => {
               </li>
             ))}
           </ul>
-        </Content>
+        </Explanation>
+        <Content>{gameDetail.content}</Content>
       </DetailMain>
       <DetailSide
         addToWishlist={addToWishlist}
@@ -145,7 +146,7 @@ const DetailMain = styled.div`
   margin: auto;
 `;
 
-const Content = styled.div`
+const Explanation = styled.div`
   align-items: center;
   display: flex;
   flex-direction: row;
@@ -162,4 +163,8 @@ const Content = styled.div`
     padding: 10px;
     margin: 1px;
   }
+`;
+
+const Content = styled.div`
+  padding-top: 25px;
 `;

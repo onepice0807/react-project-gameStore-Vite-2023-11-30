@@ -1,13 +1,12 @@
-import './GameList.css';
-import React from 'react';
-import { GAMES } from '../../../data/Game';
-import { useNavigate } from 'react-router-dom';
+import "./GameList.css";
+import { GAMES } from "../../../data/Game";
+import { useNavigate } from "react-router-dom";
 
 const GameList = () => {
   const navigate = useNavigate(); // useNavigate 함수를 사용합니다.
 
   const goToDetail = (gameId) => {
-    navigate('/shop/detail/' + gameId);
+    navigate("/shop/detail/" + gameId);
   };
 
   return (

@@ -1,17 +1,16 @@
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
-import TechDetailsPage from "./components/pages/AiPinPage/TechDetailsPage";
-import BrowsePage from "./components/pages/shopPage/BrowsePage";
-import TrustPage from "./components/pages/AiPinPage/TrustPage";
-import AiPinPage from "./components/pages/AiPinPage/AiPinPage";
-import GiftsPage from "./components/pages/shopPage/GiftsPage";
-import MainPage from "./components/pages/mainPage/MainPage";
-import Shop from "./components/pages/shopPage/index";
 import BottomNav from "./components/BottomNav";
 import Header from "./components/Header";
 import "./App.css";
-import GameDetailPage from "./components/pages/detailPage/GameDetailPage";
 import { GameProvider } from "./context/GameContext";
-import CartPage from "./components/pages/detailPage/CartPage";
+import AiPinPage from "./pages/AiPinPage/AiPinPage";
+import MainPage from "./pages/mainPage/MainPage";
+import TrustPage from "./pages/AiPinPage/TrustPage";
+import TechDetailsPage from "./pages/AiPinPage/TechDetailsPage";
+import BrowsePage from "./pages/shopPage/BrowsePage";
+import GameDetailPage from "./pages/detailPage/GameDetailPage";
+import CartPage from "./pages/detailPage/CartPage";
+import Shop from "./pages/shopPage/index";
 
 const Layout = () => {
   return (
@@ -40,7 +39,6 @@ function App() {
               <Route path="shop" element={<Shop />}>
                 <Route index element={<div>Welcome to the shop!</div>} />
                 <Route path="browse" element={<BrowsePage />} />
-                <Route path="gifts" element={<GiftsPage />} />
               </Route>
               <Route path="shop/cart" element={<CartPage />} />
               <Route path="/shop/detail/:gameId" element={<GameDetailPage />} />
