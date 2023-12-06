@@ -2,12 +2,15 @@ import { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { GameContext } from "../../context/GameContext";
 import CartItem from "./CartItem";
+import PurchaseModal from "./PurchaseModal";
 
 const CartPage = () => {
   const { cart, setCart } = useContext(GameContext);
   const [subtotal, setSubtotal] = useState(0);
   const [tax, setTax] = useState(0);
   const [total, setTotal] = useState(0);
+  const [showModal, setShowModal] = useState(false); // 모달 창의 상태를 결정하는 State
+  const [selectedItem, setSelectedItem] = useState(null);
 
   useEffect(() => {
     // 결제를 위한 useEffect
@@ -28,6 +31,11 @@ const CartPage = () => {
     const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
     setCart(storedCart);
   }, [setCart]);
+
+  const handlePurchaseClick = () => {
+    setSelectedItem(cart);
+    setShowModal(true);
+  };
 
   return (
     <PageLayout>
@@ -58,7 +66,14 @@ const CartPage = () => {
           <div>가격: ₩{subtotal.toLocaleString()}</div>
           <div>세금(10%): ₩{tax.toLocaleString()}</div>
           <div>총액: ₩{total.toLocaleString()}</div>
-          <Button onClick="">결제하기</Button>
+          <Button onClick={handlePurchaseClick}>결제하기</Button>
+          {showModal && (
+            <PurchaseModal
+              total={total}
+              gameDetail={selectedItem}
+              setShowModal={setShowModal}
+            />
+          )}
         </CartSummary>
       </RightSection>
     </PageLayout>
@@ -90,7 +105,7 @@ const Container = styled.div`
   padding-left: 100px;
 `;
 
-const Button = styled.div`
+const Button = styled.button`
   background-color: #007bff;
   border: none;
   border-radius: 10px;

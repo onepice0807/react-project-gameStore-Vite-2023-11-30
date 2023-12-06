@@ -21,12 +21,12 @@ export const GAMES = [
   {
     id: "02",
     name: "Galaxy Explorers",
-    price: "39.99",
+    price: "40,000",
     description: "Space exploration and adventure game.",
     lunchDate: "2023-12-07",
     content: "",
-    genre: "",
-    function: "",
+    genre: ["액션", "어드벤처"],
+    function: ["싱글 플레이어", "협동"],
     gameDeveloperId: "dev02",
     gamePublisherId: "pub02",
     imageUrl: [
@@ -38,12 +38,12 @@ export const GAMES = [
   {
     id: "03",
     name: "The Lost Kingdom",
-    price: "49.99",
+    price: "54,000",
     description: "Epic journey through a mystical kingdom.",
     lunchDate: "2023-12-07.",
     content: "",
-    genre: "",
-    function: "",
+    genre: ["액션", "어드벤처"],
+    function: ["싱글 플레이어", "협동"],
     gameDeveloperId: "dev03",
     gamePublisherId: "pub03",
     imageUrl: [
@@ -55,12 +55,12 @@ export const GAMES = [
   {
     id: "04",
     name: "Racers Unleashed",
-    price: "59.99",
+    price: "64,900",
     description: "High-speed racing action game.",
     lunchDate: "2023-12-07.",
     content: "",
-    genre: "",
-    function: "",
+    genre: ["액션", "어드벤처"],
+    function: ["싱글 플레이어", "협동"],
     gameDeveloperId: "dev04",
     gamePublisherId: "pub04",
     imageUrl: [
@@ -72,12 +72,12 @@ export const GAMES = [
   {
     id: "05",
     name: "Shadow of the Empire",
-    price: "44.99",
+    price: "64,900",
     description: "Strategic empire building in a medieval fantasy world.",
     lunchDate: "2023-12-07.",
     content: "",
-    genre: "",
-    function: "",
+    genre: ["액션", "어드벤처"],
+    function: ["싱글 플레이어", "협동"],
     gameDeveloperId: "dev05",
     gamePublisherId: "pub05",
     imageUrl: [
@@ -89,7 +89,7 @@ export const GAMES = [
   {
     id: "06",
     name: "Mystery of the Ancient Ruins",
-    price: "49.99",
+    price: "64,900",
     description: "Explore ancient ruins and uncover hidden secrets.",
     lunchDate: "2023-12-07.",
     content: "",
@@ -141,7 +141,7 @@ export const GAMES = [
   {
     id: "09",
     name: "Game Name3",
-    price: "69.99",
+    price: "64,900",
     description: "Exciting game with thrilling gameplay.",
     lunchDate: "2023-12-07.",
     content: "",
@@ -158,7 +158,7 @@ export const GAMES = [
   {
     id: "10",
     name: "Game Name4",
-    price: "29.99",
+    price: "64,900",
     description: "Exciting game with thrilling gameplay.",
     lunchDate: "2023-12-07.",
     content: "",
@@ -175,7 +175,7 @@ export const GAMES = [
   {
     id: "11",
     name: "Game Name5",
-    price: "59.99",
+    price: "64,900",
     description: "Exciting game with thrilling gameplay.",
     lunchDate: "2023-12-07.",
     content: "",
@@ -192,9 +192,12 @@ export const GAMES = [
   {
     id: "12",
     name: "Game Name6",
-    price: "69.99",
+    price: "64,900",
     description: "Exciting game with thrilling gameplay.",
     lunchDate: "2023-12-07.",
+    content: "",
+    genre: ["액션", "어드벤처"],
+    function: ["싱글 플레이어", "협동"],
     gameDeveloperId: "dev12",
     gamePublisherId: "pub12",
     imageUrl: [
